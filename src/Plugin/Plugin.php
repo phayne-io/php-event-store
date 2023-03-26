@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,19 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\Plugin;
 
-use Stringable;
+use Phayne\EventStore\ActionEventEmitterEventStore;
 
 /**
- * Class StreamName
+ * Interface Plugin
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Plugin
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+interface Plugin
 {
-    public function __construct(public string $name)
-    {
-    }
+    public function attachToEventStore(ActionEventEmitterEventStore $eventStore): void;
 
-    public function __toString(): string
-    {
-        return $this->name;
-    }
+    public function detachFromEventStore(ActionEventEmitterEventStore $eventStore): void;
 }

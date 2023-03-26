@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace PhayneTest\PhpEventStore;
+namespace PhayneTest\EventStore;
 
-use Phayne\PhpEventStore\StreamName;
+use Phayne\EventStore\StreamName;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class StreamNameTest
  *
- * @package PhayneTest\PhpEventStore
+ * @package PhayneTest\EventStore
  * @author Julien Guittard <julien@phayne.com>
  */
 class StreamNameTest extends TestCase

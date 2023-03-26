@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace PhayneTest\EventStore\Metadata;
 
-use Stringable;
+use Phayne\EventStore\Metadata\Operator;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Class StreamName
+ * Class OperatorTest
  *
- * @package Phayne\EventStore
+ * @package PhayneTest\EventStore\Metadata
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+class OperatorTest extends TestCase
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
 }

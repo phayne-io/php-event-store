@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -14,22 +13,21 @@ declare(strict_types=1);
 
 namespace Phayne\EventStore;
 
-use Stringable;
+use Iterator;
 
 /**
- * Class StreamName
+ * Interface EventStore
  *
  * @package Phayne\EventStore
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+interface EventStore extends ReadOnlyEventStore
 {
-    public function __construct(public string $name)
-    {
-    }
+    public function updateStreamMetadata(StreamName $streamName, array $newMetadata): void;
 
-    public function __toString(): string
-    {
-        return $this->name;
-    }
+    public function create(Stream $stream): void;
+
+    public function appendTo(StreamName $streamName, Iterator $streamEvents): void;
+
+    public function delete(StreamName $streamName): void;
 }

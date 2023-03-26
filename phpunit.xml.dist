@@ -10,7 +10,7 @@
         </include>
     </coverage>
     <testsuites>
-        <testsuite name="PhayneTest\PhpEventStore">
+        <testsuite name="PhayneTest\EventStore">
             <directory>./test</directory>
         </testsuite>
     </testsuites>

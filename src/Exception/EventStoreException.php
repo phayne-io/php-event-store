@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
-
-use Stringable;
+namespace Phayne\EventStore\Exception;
 
 /**
- * Class StreamName
+ * Interface EventStoreException
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Exception
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+interface EventStoreException
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
 }

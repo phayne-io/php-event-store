@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\Exception;
 
-use Stringable;
+use Phayne\Exception\LogicException;
 
 /**
- * Class StreamName
+ * Class TransactionNotStarted
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Exception
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+final class TransactionNotStarted extends LogicException implements EventStoreException
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
+    protected $message = 'The transaction has not yet been started.';
 }

@@ -12,19 +12,19 @@
 
 declare(strict_types=1);
 
-namespace Phayne\PhpEventStore;
+namespace Phayne\EventStore;
 
 use Iterator;
 
 /**
  * Class Stream
  *
- * @package Phayne\PhpEventStore
+ * @package Phayne\EventStore
  * @author Julien Guittard <julien@phayne.com>
  */
 final readonly class Stream
 {
-    public function __construct(public StreamName $streamName, public Iterator $iterator, public array $metadata = [])
+    public function __construct(public StreamName $streamName, public Iterator $streamEvents, public array $metadata = [])
     {
     }
 }

@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\Upcasting;
 
-use Stringable;
+use Phayne\Messaging\Messaging\Message;
 
 /**
- * Class StreamName
+ * Interface Upcaster
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Upcasting
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+interface Upcaster
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
+    public function upcast(Message $message): array;
 }

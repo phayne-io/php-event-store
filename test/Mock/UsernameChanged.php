@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
-
-use Stringable;
+namespace PhayneTest\EventStore\Mock;
 
 /**
- * Class StreamName
+ * Class UsernameChanged
  *
- * @package Phayne\EventStore
+ * @package PhayneTest\EventStore\Mock
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+class UsernameChanged extends TestDomainEvent
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
 }

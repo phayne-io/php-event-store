@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\StreamIterator;
 
-use Stringable;
+use ArrayIterator;
 
 /**
- * Class StreamName
+ * Class InMemoryStreamIterator
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\StreamIterator
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+final class InMemoryStreamIterator extends ArrayIterator implements StreamIterator
 {
-    public function __construct(public string $name)
-    {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
 }

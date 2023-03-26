@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,20 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\Exception;
 
-use Stringable;
+use Phayne\Exception\RuntimeException;
 
 /**
- * Class StreamName
+ * Class ConfigurationException
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Exception
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+class ConfigurationException extends RuntimeException implements EventStoreException
 {
-    public function __construct(public string $name)
+    public static function configurationError(string $msg): ConfigurationException
     {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
+        return new self('[Configuration Error] ' . $msg . "\n");
     }
 }

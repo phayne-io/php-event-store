@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,25 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
-
-use Stringable;
+namespace Phayne\EventStore\Projection;
 
 /**
- * Class StreamName
+ * Interface ReadModel
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Projection
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+interface ReadModel
 {
-    public function __construct(public string $name)
-    {
-    }
+    public function init(): void;
 
-    public function __toString(): string
-    {
-        return $this->name;
-    }
+    public function isInitialized(): bool;
+
+    public function reset(): void;
+
+    public function delete(): void;
+
+    public function stack(string $operation, ...$args): void;
+
+    public function persist(): void;
 }

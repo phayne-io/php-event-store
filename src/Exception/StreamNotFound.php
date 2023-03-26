@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,24 +11,21 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace Phayne\EventStore\Exception;
 
-use Stringable;
+use Phayne\EventStore\StreamName;
+use Phayne\Exception\RuntimeException;
 
 /**
- * Class StreamName
+ * Class StreamNotFound
  *
- * @package Phayne\EventStore
+ * @package Phayne\EventStore\Exception
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+final class StreamNotFound extends RuntimeException implements EventStoreException
 {
-    public function __construct(public string $name)
+    public static function with(StreamName $streamName): StreamNotFound
     {
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
+        return new self(sprintf('A stream with name "%s" could not be found', $streamName));
     }
 }
