@@ -2,6 +2,7 @@
   "name": "phayne-io/php-event-store",
   "description": "php-event-store",
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "license": "proprietary",
   "authors": [
     {

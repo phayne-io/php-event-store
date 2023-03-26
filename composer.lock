@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7367da7faae96c17fafc1d68a2aed8b8",
+    "content-hash": "e2010709ba77e9fd76775632d4e9132d",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -5626,10 +5626,11 @@
         "phayne-io/php-exception": 20,
         "phayne-io/php-messaging": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "ext-pcntl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
