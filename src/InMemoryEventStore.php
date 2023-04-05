@@ -37,7 +37,7 @@ final class InMemoryEventStore implements TransactionalEventStore
     public function create(Stream $stream): void
     {
         $streamName = $stream->streamName;
-        $streamNameString = (string)$streamName;
+        $streamNameString = $streamName->toString();
 
         if (
             isset($this->streams[$streamNameString]) ||
@@ -57,7 +57,7 @@ final class InMemoryEventStore implements TransactionalEventStore
 
     public function appendTo(StreamName $streamName, Iterator $streamEvents): void
     {
-        $streamNameString = (string)$streamName;
+        $streamNameString = $streamName->toString();
 
         if (
             ! isset($this->streams[$streamNameString]) &&

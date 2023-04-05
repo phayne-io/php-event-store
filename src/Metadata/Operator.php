@@ -42,14 +42,14 @@ enum Operator: string
     {
         return match ($enum) {
             Operator::EQUALS => $expected === $value,
-            Operator::GREATER_THAN => $expected > $value,
-            Operator::GREATER_THAN_EQUALS => $expected >= $value,
+            Operator::GREATER_THAN => $value > $expected,
+            Operator::GREATER_THAN_EQUALS => $value >= $expected,
             Operator::IN => in_array($value, $expected, true),
-            Operator::LOWER_THAN => $expected < $value,
-            Operator::LOWER_THAN_EQUALS => $expected <= $value,
-            Operator::NOT_EQUALS => $expected !== $value,
+            Operator::LOWER_THAN => $value < $expected,
+            Operator::LOWER_THAN_EQUALS => $value <= $expected,
+            Operator::NOT_EQUALS => $value !== $expected,
             Operator::NOT_IN => ! in_array($value, $expected, true),
-            Operator::REGEX => preg_match('/' . $expected . '/', $value),
+            Operator::REGEX => boolval(preg_match('/' . $expected . '/', $value)),
         };
     }
 }

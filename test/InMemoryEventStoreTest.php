@@ -11,17 +11,23 @@
 
 declare(strict_types=1);
 
-namespace PhayneTest\EventStore\Metadata;
+namespace PhayneTest\EventStore;
 
-use Phayne\EventStore\Metadata\Operator;
+use Phayne\EventStore\InMemoryEventStore;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class OperatorTest
+ * Class InMemoryEventStoreTest
  *
- * @package PhayneTest\EventStore\Metadata
+ * @package PhayneTest\EventStore
  * @author Julien Guittard <julien@phayne.com>
  */
-class OperatorTest extends TestCase
+class InMemoryEventStoreTest extends AbstractEventStoreTest
 {
+    use TransactionalEventStoreTestTrait;
+
+    protected function setUp(): void
+    {
+        $this->eventStore = new InMemoryEventStore();
+    }
 }

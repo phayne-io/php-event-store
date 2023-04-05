@@ -346,7 +346,7 @@ trait ProvidesInMemoryEventStore
     private function matchesMetadata(MetadataMatcher $metadataMatcher, array $metadata): bool
     {
         foreach ($metadataMatcher->data() as $match) {
-            if ($match['fieldType'] !== FieldType::METADATA->value) {
+            if ($match['fieldType'] !== FieldType::METADATA) {
                 continue;
             }
 
@@ -356,7 +356,7 @@ trait ProvidesInMemoryEventStore
                 return false;
             }
 
-            if (! Operator::from($match['operator'])->match($metadata[$field], $match['value'])) {
+            if (! $match['operator']->match($metadata[$field], $match['value'])) {
                 return false;
             }
         }
@@ -367,7 +367,7 @@ trait ProvidesInMemoryEventStore
     private function matchesMessagesProperty(MetadataMatcher $metadataMatcher, Message $message): bool
     {
         foreach ($metadataMatcher->data() as $match) {
-            if ($match['fieldType'] !== FieldType::MESSAGE_PROPERTY->value) {
+            if ($match['fieldType'] !== FieldType::MESSAGE_PROPERTY) {
                 continue;
             }
 
@@ -381,7 +381,7 @@ trait ProvidesInMemoryEventStore
                 )),
             };
 
-            if (! Operator::from($match['operator'])->match($value, $match['value'])) {
+            if (! $match['operator']->match($value, $match['value'])) {
                 return false;
             }
         }

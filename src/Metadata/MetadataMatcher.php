@@ -51,11 +51,15 @@ class MetadataMatcher
 
     private function validateValue(Operator $operator, mixed $value): void
     {
-        if (($operator === Operator::IN || $operator === Operator::NOT_IN) && ! is_array($value)) {
-            throw new InvalidArgumentException(sprintf(
-                'Value must be an array for the operator %s.',
-                $operator->name
-            ));
+        if (($operator === Operator::IN || $operator === Operator::NOT_IN)) {
+            if (! is_array($value)) {
+                throw new InvalidArgumentException(sprintf(
+                    'Value must be an array for the operator %s.',
+                    $operator->name
+                ));
+            } else {
+                return;
+            }
         }
 
         if ($operator === Operator::REGEX && ! is_string($value)) {

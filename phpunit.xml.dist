@@ -9,6 +9,9 @@
             <directory suffix=".php">src</directory>
         </include>
     </coverage>
+    <extensions>
+        <extension class="PhayneTest\EventStore\PHPUnitUtil"/>
+    </extensions>
     <testsuites>
         <testsuite name="PhayneTest\EventStore">
             <directory>./test</directory>

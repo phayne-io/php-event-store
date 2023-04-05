@@ -1,5 +1,4 @@
 <?php
-//phpcs:ignoreFile
 
 /**
  * This file is part of phayne-io/php-event-store package.
@@ -12,29 +11,22 @@
 
 declare(strict_types=1);
 
-namespace Phayne\EventStore;
+namespace PhayneTest\EventStore;
 
-use Stringable;
+use Phayne\EventStore\NonTransactionalInMemoryEventStore;
 
 /**
- * Class StreamName
+ * Class NonTransactionalInMemoryEventStoreTest
  *
- * @package Phayne\EventStore
+ * @package PhayneTest\EventStore
  * @author Julien Guittard <julien@phayne.com>
  */
-final readonly class StreamName implements Stringable
+class NonTransactionalInMemoryEventStoreTest extends AbstractEventStoreTest
 {
-    public function __construct(public string $name)
-    {
-    }
+    use EventStoreTestStreamTrait;
 
-    public function toString(): string
+    protected function setUp(): void
     {
-        return $this->name;
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
+        $this->eventStore = new NonTransactionalInMemoryEventStore();
     }
 }
